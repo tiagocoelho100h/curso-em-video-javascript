@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #333333;
+            color: white;
+            font: normal 20px Arial;
+        }
+
+        h1 {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá, mundo!</h1>
+    <p>Acabei com a maldição...</p>
+
+    <script>
+        // var n1 = Number.parseFloat(window.prompt('Digita um numero:'))
+        // var n2 = Number.parseFloat(window.prompt('Digite outro numero:'))
+        var n1 = Number(window.prompt('Digita um numero:')) // Desta forma ele passa para numero sem precisar identificar se e float ou int.
+        var n2 = Number(window.prompt('Digite outro numero:'))
+        var s = n1 + n2
+        window.alert('O resultado é: ' + String(s)) // Convertir a variavel 's' para um string so para teste.
+        window.alert(`A soma de ${n1} e ${n2} é igual a ${s}`) // Desta forma eu simplifico o codigo usando utilizando template string.
+    </script>
+</body>
+</html>

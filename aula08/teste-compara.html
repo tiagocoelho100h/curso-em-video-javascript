@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Compara</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: yellow;
+        }
+
+        .item {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            margin: 5px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="new">
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+
+            <select name="type" id="type">
+                <option value="box">Box</option>
+            </select>
+
+            <select name="color" id="color">
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+            </select>
+        </form>
+
+        <button id="create" onclick="createBox()">Create</button>
+
+    </div>
+
+    <div id="container">
+
+    </div>
+
+    <script>
+        var containerHTML = ''
+        var contador = 0
+
+        function createBox() {
+            //var name = `box${contador}`
+            var name = document.getElementById('name').value
+            var color = document.getElementById('color').value
+
+            document.getElementById('container').innerHTML = containerHTML + `<div class="item ${color}" id="${name}">${name}</div>`
+            containerHTML = document.getElementById('container').innerHTML
+            //contador++
+        }
+    </script>
+</body>
+</html>

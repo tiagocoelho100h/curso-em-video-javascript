@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste 1</title>
+
+    <script>
+
+        // Criando o objeto 'x' apartir da classe 'variavel' para armazenar os valores fora das outros funções.
+        class variavel {
+            constructor(valor){
+                this.resultado = valor
+            }
+        }
+
+        var x = new variavel(0)
+
+
+
+        function calculadora() {
+            var primeiroNumero = Number(document.getElementById('primeiroNumero').value)
+            var segundoNumero = Number(document.getElementById('segundoNumero').value)
+            var campoOperacao = document.getElementById('operacao')
+            var operacao = campoOperacao.options[campoOperacao.selectedIndex].value
+
+            if (operacao == 'adicao') {
+                x.resultado = primeiroNumero + segundoNumero
+            }
+            else if (operacao == 'subtracao') {
+                x.resultado = primeiroNumero - segundoNumero
+            }
+            else if (operacao == 'multiplicacao') {
+                x.resultado = primeiroNumero * segundoNumero
+            }
+            else if (operacao == 'divisao') {
+                x.resultado = primeiroNumero / segundoNumero
+            }
+            else if (operacao == 'resto') {
+                x.resultado = primeiroNumero % segundoNumero
+            }
+            else if (operacao == 'potencia') {
+                x.resultado = primeiroNumero ** segundoNumero
+            }
+            else {
+                x.resultado = 0
+                alert('erro 001')
+            }
+
+            document.getElementById('resultado').innerText = `${x.resultado}`
+        }
+
+        // Função que adiciona novos recursos a aplicação.
+        function calculadoraMais(tipo) {
+
+            if (tipo == 'incrementa') {
+                x.resultado++
+            }
+            else if (tipo == 'decrementa') {
+                x.resultado--
+            }
+            else if (tipo == 'maisN') {
+                x.resultado += x.resultado
+            }
+            else if (tipo == 'menosN') {
+                x.resultado -= x.resultado
+            }
+            else if (tipo == 'moedaBR') {
+                xMoeda = x.resultado
+                document.getElementById('resultadoMoeda').innerText = `${xMoeda.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+            }
+            else {
+                alert('error 002')
+            }
+
+            document.getElementById('resultado').innerText = `${x.resultado}`
+            
+        }
+
+        // Função que reinicia a calculadora para o estado inicial.
+        function reset() {
+            x.resultado = 0
+            document.getElementById('resultado').innerText = `${x.resultado}`
+            document.getElementById('resultadoMoeda').innerText = ''
+        }
+    </script>
+
+</head>
+<body>
+    <div id="container">
+        <form>
+            <input type="number" name="primeiroNumero" id="primeiroNumero">
+            <select name="operacao" id="operacao">
+                <option value="adicao">+</option>
+                <option value="subtracao">-</option>
+                <option value="multiplicacao">x</option>
+                <option value="divisao">/</option>
+                <option value="resto">Resto</option>
+                <option value="potencia">Potencia</option>
+            </select>
+            <input type="number" name="segundoNumero" id="segundoNumero">
+            <input type="reset" value="Reset" id="reset">
+            <input type="button" value="=" id="enter">
+            <input type="button" value="+1" id="incrementa">
+            <input type="button" value="-1" id="decrementa">
+            <input type="button" value="+n" id="maisN">
+            <input type="button" value="-n" id="menosN">
+            <input type="button" value="R$" id="moedaBR">
+        </form>
+        <p id="resultado">0</p>
+        <p id="resultadoMoeda"></p>
+    </div>
+
+    <script>
+        // Enviado para os elementos html as suas respectivas funções.
+        document.getElementById('reset').addEventListener('click', reset, false)
+        document.getElementById('enter').addEventListener('click', calculadora, false)
+        document.getElementById('incrementa').addEventListener('click', function(){calculadoraMais('incrementa')}, false)
+        document.getElementById('decrementa').addEventListener('click', function(){calculadoraMais('decrementa')}, false)
+        document.getElementById('maisN').addEventListener('click', function(){calculadoraMais('maisN')}, false)
+        document.getElementById('menosN').addEventListener('click', function(){calculadoraMais('menosN')}, false)
+        document.getElementById('moedaBR').addEventListener('click', function(){calculadoraMais('moedaBR')}, false)
+    </script>
+</body>
+</html>
